@@ -1,0 +1,19 @@
+# package inistall
+npm i express mongoose config dotenv express-validator nodemon autobind-decorator winston
+----------------------------------------------------------
+# add typescript on project
+npm i --save -D typescript @types/express @types/node
+--npx tsc --init
+----------------------------------------------------------
+npm i --save-dev @types/debug @types/config @types/cors @types/nodemon
+npm i --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm i --save-dev ts-node
+----------------------------------------------------------
+# add this on tsconfig.json
+"outDir": "./dist"
+
+# for start 
+npm run build
+npm run dev
+
+
