@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import validateRequestBody from "./../utils/helperFunc/validateRequestBody";
+import validateRequestBody from "../utils/helperFunc/validateRequestBody";
 
-const modelValidation = (
+const modelValidationMid = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -10,4 +10,4 @@ const modelValidation = (
   next();
 };
 
-export default modelValidation;
+export default modelValidationMid;

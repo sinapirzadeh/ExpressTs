@@ -2,7 +2,7 @@ import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
 import serverError from "../errors/serverError";
 import logger from "../utils/helperFunc/logger";
 
-const ErrorHandelingMidderware = (
+const ErrorHandelingMid = (
   error: ErrorRequestHandler,
   req: Request,
   res: Response,
@@ -20,4 +20,4 @@ const ErrorHandelingMidderware = (
   }
 };
 
-export default ErrorHandelingMidderware;
+export default ErrorHandelingMid;
