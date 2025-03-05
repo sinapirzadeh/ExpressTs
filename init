@@ -1,0 +1,5 @@
+npm i express mongoose dotenv express-validator autobind-decorator winston cors helmet express-rate-limit
+npm i --save -D typescript ts-node @types/express @types/node @types/cors
+npm i --save-dev @fullstacksjs/eslint-config eslint prettier
+
+cp .env.example .env
