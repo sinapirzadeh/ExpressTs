@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const home = mongoose.model(
-  "User",
+  'User',
   new mongoose.Schema(
     {
       name: { type: String, required: true },
@@ -10,8 +10,8 @@ const home = mongoose.model(
     },
     {
       timestamps: true,
-    }
-  )
+    },
+  ),
 );
 
 export default home;

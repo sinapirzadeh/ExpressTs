@@ -1,13 +1,13 @@
-import app from "./app";
-import env from "config/env";
-import logger from "utils/helperFunc/logger";
+import { createApp } from './app';
+import config from './config/config';
+import logger from './utils/helperFunc/logger';
 
-const server = app();
+const app = createApp();
 
-server
-  .listen(env.serverPort, () =>
-    logger.info(`server start on : http://localhost:${env.serverPort}/api/`)
+app
+  .listen(config.serverPort, () =>
+    logger.info(`server start on : http://localhost:${config.serverPort}/api/`),
   )
-  .on("error", (err: Error) =>
-    logger.error(`Failed to start server: ${err.message}`)
+  .on('error', (err: Error) =>
+    logger.error(`Failed to start server: ${err.message}`),
   );

@@ -1,12 +1,18 @@
-import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
-import serverError from "../errors/serverError";
-import logger from "../utils/helperFunc/logger";
+import type {
+  ErrorRequestHandler,
+  NextFunction,
+  Request,
+  Response,
+} from 'express';
 
-const ErrorHandelingMid = (
+import serverError from '../errors/serverError';
+import logger from '../utils/helperFunc/logger';
+
+const errorHandlingMiddleware = (
   error: ErrorRequestHandler,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (error instanceof serverError) {
     res.status(error.status).json({
@@ -15,9 +21,9 @@ const ErrorHandelingMid = (
   } else {
     logger.error(error);
     res.status(500).json({
-      messge: "Internal Server Error",
+      messge: 'Internal Server Error',
     });
   }
 };
 
-export default ErrorHandelingMid;
+export default errorHandlingMiddleware;
