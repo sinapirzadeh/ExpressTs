@@ -3,7 +3,7 @@
 ## Install the required packages for the app (dependencies and devDependencies).
 
 ```sh
-npm i express mongoose dotenv express-validator autobind-decorator winston cors helmet express-rate-limit
+npm i express mongoose zod winston cors helmet express-rate-limit
 ```
 
 ##TypeScript Configurations
@@ -27,4 +27,10 @@ npm i --save-dev @fullstacksjs/eslint-config eslint prettier
 
 ```sh
 npm run dev
+```
+
+4.if in your Code`s see Error like This (Delete ␍)
+
+```sh
+npx eslint --fix .
 ```

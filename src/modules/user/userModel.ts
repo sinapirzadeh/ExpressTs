@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const home = mongoose.model(
+const userModel = mongoose.model(
   'User',
   new mongoose.Schema(
     {
@@ -14,4 +14,4 @@ const home = mongoose.model(
   ),
 );
 
-export default home;
+export default userModel;

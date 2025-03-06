@@ -6,7 +6,7 @@ import type {
 } from 'express';
 
 import serverError from '../errors/serverError';
-import logger from '../utils/helperFunc/logger';
+import createLog from '../tools/createLog';
 
 const errorHandlingMiddleware = (
   error: ErrorRequestHandler,
@@ -19,9 +19,9 @@ const errorHandlingMiddleware = (
       message: error.message,
     });
   } else {
-    logger.error(error);
+    createLog.error(error);
     res.status(500).json({
-      messge: 'Internal Server Error',
+      message: 'Internal Server Error',
     });
   }
 };

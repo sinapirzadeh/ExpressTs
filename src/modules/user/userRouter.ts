@@ -1,13 +1,10 @@
 import { Router } from 'express';
-import modelValidation from 'middlewares/modelValidationMid';
 
-import * as userController from './userController';
-import userValidation from './userValidation';
+import { createUser, getUsers } from './userController';
 
-const app = Router();
+const router = Router();
 
-app.get('/', userController.getUsers);
+router.get('/', getUsers);
+router.post('/', createUser);
 
-app.post('/', modelValidation, userValidation(), userController.createUser);
-
-export default app;
+export default router;

@@ -1,15 +1,13 @@
 import mongoose from 'mongoose';
 
-import logger from '../utils/helperFunc/logger';
+import createLog from '../tools/createLog';
 
-const connectToMongo = async (uri: string): Promise<void> => {
-  await mongoose
+export default function connectToMongo(uri: string) {
+  return mongoose
     .connect(uri)
-    .then(() => logger.info('Connected to MongoDB :) => be Happy!'))
-    .catch((error: any) => {
-      logger.error(error.message);
+    .then(() => createLog.info('Mongo Connected!'))
+    .catch((error: Error) => {
+      createLog.error(error.message);
       throw error;
     });
-};
-
-export default connectToMongo;
+}

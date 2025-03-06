@@ -1,25 +1,29 @@
-import type { IResReqType } from '../../types/ResReqDto';
+import type { NextFunction, Request, Response } from 'express';
 
-import jsonResponse from '../../utils/helperFunc/jsonResponse';
 import { createNewUser, getAllData } from './userServices';
 
-export async function createUser({ req, res, next }: IResReqType) {
+export async function getUsers(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
-    const user = await createNewUser(req.body);
-    return res.status(201).send(user);
-  } catch (err: any) {
+    const users = await getAllData();
+    res.send({ users });
+  } catch (err: unknown) {
     next(err);
   }
 }
 
-export async function getUsers({ req, res, next }: IResReqType): Promise<void> {
+export async function createUser(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
-    const users = await getAllData();
-    return jsonResponse({
-      res,
-      data: { users },
-    });
-  } catch (err: any) {
+    const user = await createNewUser(req.body);
+    res.status(201).send(user);
+  } catch (err: unknown) {
     next(err);
   }
 }
