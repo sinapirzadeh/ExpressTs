@@ -1,39 +1,25 @@
-import jsonResponse from "../../utils/helperFunc/jsonResponse";
-import { IResReqType } from "../../types/IResReqType";
-import baseController from "../baseController";
-import { getAllData, createNewUser } from "./userServices";
+import type { IResReqType } from '../../types/ResReqDto';
 
-class userController extends baseController {
-  async getUsers({ req, res, next }: IResReqType): Promise<void> {
-    try {
-      const users = await getAllData();
-      return jsonResponse({
-        res,
-        data: { users },
-      });
-    } catch (err: any) {
-      next(err);
-    }
-  }
+import jsonResponse from '../../utils/helperFunc/jsonResponse';
+import { createNewUser, getAllData } from './userServices';
 
-  async createUser({ req, res, next }: IResReqType) {
-    try {
-      const isCreated = await createNewUser(req.body);
-      if (isCreated) {
-        return jsonResponse({
-          res,
-          msg: "User created!",
-        });
-      }
-
-      return jsonResponse({
-        res,
-        msg: "User not created!",
-      });
-    } catch (err: any) {
-      next(err);
-    }
+export async function createUser({ req, res, next }: IResReqType) {
+  try {
+    const user = await createNewUser(req.body);
+    return res.status(201).send(user);
+  } catch (err: any) {
+    next(err);
   }
 }
 
-export default new userController();
+export async function getUsers({ req, res, next }: IResReqType): Promise<void> {
+  try {
+    const users = await getAllData();
+    return jsonResponse({
+      res,
+      data: { users },
+    });
+  } catch (err: any) {
+    next(err);
+  }
+}

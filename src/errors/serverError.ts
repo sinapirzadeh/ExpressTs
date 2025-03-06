@@ -1,6 +1,6 @@
 export default class ServerError {
-  public status: number;
   public message: string;
+  public status: number;
 
   constructor(status: number, message: string) {
     this.message = message;

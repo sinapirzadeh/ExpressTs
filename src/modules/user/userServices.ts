@@ -1,5 +1,6 @@
-import user from "./userModel";
-import { IUserType } from "./userTypes";
+import type { IUserType } from './userTypes';
+
+import user from './userModel';
 
 export const getAllData = async () => {
   const data = await user.find({});
@@ -7,6 +8,5 @@ export const getAllData = async () => {
 };
 
 export const createNewUser = async (data: IUserType) => {
-  const isCreated = await user.create(data);
-  return isCreated;
+  await user.create(data);
 };
